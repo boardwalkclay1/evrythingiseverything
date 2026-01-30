@@ -1,0 +1,467 @@
+/* Global reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Colors: greens, browns, blues */
+:root {
+  --forest: #0f3d2e;
+  --bark: #4a2e14;
+  --sky: #7fb7d4;
+  --moss: #6a8f3a;
+  --river: #c9d1d3;
+  --soil: #0a0a0a;
+  --leaf-light: #7fbf6a;
+  --leaf-dark: #3f6b3a;
+  --white: #fdfdfd;
+}
+
+/* Body + backgrounds */
+body.page {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--river);
+  cursor: none; /* hide default cursor for leaf cursor */
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Page-specific gradients */
+.page-index {
+  background: radial-gradient(circle at top, var(--sky), var(--forest) 40%, var(--bark) 80%);
+}
+
+.page-videos {
+  background: linear-gradient(135deg, var(--sky), var(--forest));
+}
+
+.page-photos {
+  background: linear-gradient(135deg, var(--forest), var(--bark));
+}
+
+.page-products {
+  background: linear-gradient(135deg, var(--bark), var(--forest));
+}
+
+/* Content wrapper */
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+
+/* Hero */
+.hero h1 {
+  font-size: 3rem;
+  color: var(--river);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--river);
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--river);
+  background: rgba(10, 10, 10, 0.4);
+  color: var(--river);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background: rgba(127, 191, 106, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Footer */
+.footer {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: var(--river);
+  opacity: 0.8;
+}
+
+/* Sub headers */
+.sub-header {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 1.5rem 1rem;
+  text-align: center;
+  color: var(--river);
+}
+
+.sub-header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sub-header p {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--river);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+/* Grids */
+.grid {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.videos-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.photos-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.products-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Cards */
+.video-card iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.photo-card img,
+.product-card img {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.product-card {
+  background: rgba(10, 10, 10, 0.45);
+  border-radius: 18px;
+  padding: 1rem;
+  color: var(--river);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.product-card h2 {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.product-card .price {
+  margin-top: 0.25rem;
+  color: var(--leaf-light);
+  font-weight: 600;
+}
+
+.product-card .desc {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.product-card .btn {
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+.lightbox-inner img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Leaf cursor */
+.leaf-cursor {
+  position: fixed;
+  width: 26px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 9999;
+  transform-origin: center;
+}
+
+.leaf-cursor::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50% 50% 50% 0;
+  background: radial-gradient(circle at 30% 20%, var(--leaf-light), var(--leaf-dark));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Falling leaves */
+#leaf-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.leaf {
+  position: absolute;
+  width: 18px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  background: radial-gradient(circle at 30% 20%, var(--leaf-light), var(--leaf-dark));
+  opacity: 0.9;
+  animation-name: fall, sway;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+/* Tree loader */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, var(--sky), var(--forest) 40%, var(--bark) 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.loader-inner {
+  text-align: center;
+  color: var(--river);
+}
+
+.loader-text {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Tree structure */
+.tree {
+  position: relative;
+  width: 120px;
+  height: 180px;
+  margin: 0 auto;
+  animation: tree-rise 2.5s ease-out forwards;
+  transform-origin: bottom center;
+  opacity: 0;
+}
+
+.trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 26px;
+  height: 90px;
+  background: linear-gradient(to right, #3b2410, #5a3418);
+  border-radius: 12px;
+  transform: translateX(-50%);
+}
+
+.branch {
+  position: absolute;
+  width: 40px;
+  height: 10px;
+  background: linear-gradient(to right, #3b2410, #5a3418);
+  border-radius: 10px;
+}
+
+.branch-left {
+  bottom: 70px;
+  left: 10px;
+  transform-origin: left center;
+  transform: rotate(-20deg) scaleX(0);
+  animation: branch-grow-left 1.6s 0.6s ease-out forwards;
+}
+
+.branch-right {
+  bottom: 55px;
+  right: 10px;
+  transform-origin: right center;
+  transform: rotate(20deg) scaleX(0);
+  animation: branch-grow-right 1.6s 0.9s ease-out forwards;
+}
+
+/* Tree crowns (leafy tops) */
+.crown {
+  position: absolute;
+  background: radial-gradient(circle at 30% 20%, #9adf7a, #3f6b3a);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.crown-1 {
+  width: 90px;
+  height: 70px;
+  bottom: 90px;
+  left: 15px;
+  animation: crown-pop 1.2s 1.2s ease-out forwards;
+}
+
+.crown-2 {
+  width: 70px;
+  height: 55px;
+  bottom: 120px;
+  left: 5px;
+  animation: crown-pop 1.2s 1.5s ease-out forwards;
+}
+
+.crown-3 {
+  width: 70px;
+  height: 55px;
+  bottom: 120px;
+  right: 5px;
+  animation: crown-pop 1.2s 1.8s ease-out forwards;
+}
+
+/* Tree animations */
+@keyframes tree-rise {
+  0% {
+    transform: translateY(40px) scale(0.7);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes branch-grow-left {
+  0% {
+    transform: rotate(-20deg) scaleX(0);
+  }
+  100% {
+    transform: rotate(-20deg) scaleX(1);
+  }
+}
+
+@keyframes branch-grow-right {
+  0% {
+    transform: rotate(20deg) scaleX(0);
+  }
+  100% {
+    transform: rotate(20deg) scaleX(1);
+  }
+}
+
+@keyframes crown-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Loader fade-out */
+.loader-fade-out {
+  animation: loader-fade 0.8s ease-out forwards;
+}
+
+@keyframes loader-fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+  .sub-header h1 {
+    font-size: 1.8rem;
+  }
+}
